@@ -1,8 +1,8 @@
-# 🥦 Vegetable Shop
+#  Vegetable Shop
 
 Интернет-магазин овощей на React + TypeScript + Vite + Mantine
 
-## 🚀 Быстрый старт
+https://irina05091994.github.io/vegetable-shop/
 
 ```bash
 # Установка зависимостей
