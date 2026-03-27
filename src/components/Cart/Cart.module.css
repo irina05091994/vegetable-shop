@@ -1,0 +1,104 @@
+/* Контейнер корзины */
+.root {
+  width: 350px;
+  padding: var(--mantine-spacing-md);
+  background-color: var(--mantine-color-white); /* ✅ Явный фон */
+}
+
+/* Заголовок */
+.title {
+  font-weight: 700;
+  margin-bottom: var(--mantine-spacing-md);
+  margin-left: 0; /* ✅ Убираем возможный отступ */
+  padding-left: 0;
+}
+
+/* Список товаров */
+.itemsList {
+  max-height: 400px;
+  padding-right: var(--mantine-spacing-sm);
+  margin-left: 0; /* ✅ Убираем отступ */
+  padding-left: 0;
+}
+
+/* Элемент корзины */
+.cartItem {
+  padding: var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  transition: background-color 0.2s ease;
+  margin-bottom: var(--mantine-spacing-md);
+  margin-left: 0; /* ✅ Убираем отступ */
+  padding-left: var(--mantine-spacing-sm);
+}
+
+.cartItem:hover {
+  background-color: var(--mantine-color-gray-0);
+}
+
+/* Информация о товаре */
+.itemName {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  color: var(--mantine-color-black);
+}
+
+.itemPrice {
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-gray-6);
+}
+
+/* Кнопки управления количеством */
+.quantityGroup {
+  gap: var(--mantine-spacing-xs);
+  margin-left: 0; /* ✅ Убираем отступ */
+}
+
+.quantityButton {
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Кнопка удаления */
+.removeButton {
+  color: var(--mantine-color-red-6);
+}
+
+/* Итого */
+.totalGroup {
+  margin-bottom: var(--mantine-spacing-md);
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.totalLabel {
+  font-weight: 700;
+}
+
+.totalPrice {
+  font-weight: 700;
+  color: var(--mantine-color-green-6);
+}
+
+/* Кнопка очистки */
+.clearButton {
+  background-color: var(--mantine-color-green-6);
+  transition: transform 0.2s ease;
+  width: 100%; /* ✅ На всю ширину */
+}
+
+.clearButton:hover {
+  transform: scale(1.02);
+  background-color: var(--mantine-color-green-4);
+}
+
+/* Пустая корзина */
+.emptyCart {
+  width: 350px;
+  padding: var(--mantine-spacing-md);
+  text-align: center;
+  background-color: var(--mantine-color-white);
+}
+
+.emptyText {
+  color: var(--mantine-color-gray-6);
+}
