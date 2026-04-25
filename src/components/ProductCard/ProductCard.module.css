@@ -6,12 +6,6 @@
   flex-direction: column;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--mantine-shadow-lg);
-  border-color: var(--mantine-color-green-3);
-}
-
 
 .imageSection {
   width: 100%;
@@ -28,9 +22,6 @@
   transition: transform 0.3s ease;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
-}
 
 
 .productInfo {
@@ -60,6 +51,12 @@
   color: var(--mantine-color-black); 
 }
 
+.quantityButton {
+  background-color: var(--mantine-color-gray-1);
+  color: var(--mantine-color-black);
+  border: none;
+  border-radius: 20%;
+} 
 
 .stepper {
   display: flex;
@@ -73,6 +70,7 @@
   min-width: 20px;
   text-align: center;
   font-size: var(--mantine-font-size-sm);
+  
 }
 
 
@@ -85,7 +83,7 @@
   transform: scale(1.02);
 }
 
-/* Отступы для групп */
+
 .firstRow {
   margin-bottom: var(--mantine-spacing-sm);
   margin-top: var(--mantine-spacing-sm);

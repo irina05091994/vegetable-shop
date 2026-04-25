@@ -10,7 +10,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <Box>
       <Header />
-      <main style={{ paddingTop: '80px' }}>{children}</main>
+      <main style={{ paddingTop: '60px' }}>{children}</main>
     </Box>
   );
 };

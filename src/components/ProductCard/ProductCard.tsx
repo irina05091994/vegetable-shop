@@ -67,6 +67,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <ActionIcon 
             size="sm" 
             variant="outline" 
+            className={classes.quantityButton}
             onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
           >
             <IconMinus size={12} />
@@ -77,6 +78,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <ActionIcon 
             size="sm" 
             variant="outline" 
+            className={classes.quantityButton}
             onClick={() => setQuantity((prev) => prev + 1)}
           >
             <IconPlus size={12} />
@@ -96,7 +98,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
           variant="light"
           className={classes.addToCartButton}
           onClick={handleAddToCart}
-          leftSection={<IconShoppingCart size={16} />}
+          rightSection={<IconShoppingCart size={16} />}
         >
           Add to cart
         </Button>

@@ -1,56 +1,60 @@
-/* Контейнер корзины */
 .root {
-  width: 350px;
-  padding: var(--mantine-spacing-md);
-  background-color: var(--mantine-color-white); /* ✅ Явный фон */
+  max-width: 360px;
+  width: 100%;
+  background-color: var(--mantine-color-white); 
+  margin-top: var(--mantine-spacing-sm);
 }
 
-/* Заголовок */
+
 .title {
   font-weight: 700;
   margin-bottom: var(--mantine-spacing-md);
-  margin-left: 0; /* ✅ Убираем возможный отступ */
+  margin-left: 0; 
   padding-left: 0;
 }
 
-/* Список товаров */
+
 .itemsList {
   max-height: 400px;
   padding-right: var(--mantine-spacing-sm);
-  margin-left: 0; /* ✅ Убираем отступ */
+  margin-left: 0; 
   padding-left: 0;
+  overflow-y: auto;
 }
 
-/* Элемент корзины */
+
 .cartItem {
   padding: var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-sm);
   transition: background-color 0.2s ease;
   margin-bottom: var(--mantine-spacing-md);
-  margin-left: 0; /* ✅ Убираем отступ */
-  padding-left: var(--mantine-spacing-sm);
+  margin-left: 0; 
 }
 
-.cartItem:hover {
-  background-color: var(--mantine-color-gray-0);
+
+.itemImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--mantine-radius-sm);
+  margin-right: var(--mantine-spacing-sm);
 }
 
-/* Информация о товаре */
 .itemName {
-  font-size: var(--mantine-font-size-sm);
+  font-size: var(--mantine-font-size-xs);
   font-weight: 500;
   color: var(--mantine-color-black);
 }
 
 .itemPrice {
   font-size: var(--mantine-font-size-xs);
-  color: var(--mantine-color-gray-6);
+  color: var(--mantine-color-black);
 }
 
-/* Кнопки управления количеством */
+
 .quantityGroup {
   gap: var(--mantine-spacing-xs);
-  margin-left: 0; /* ✅ Убираем отступ */
+  margin-left: 0;
 }
 
 .quantityButton {
@@ -58,12 +62,12 @@
   text-align: center;
 }
 
-/* Кнопка удаления */
+
 .removeButton {
-  color: var(--mantine-color-red-6);
+  color: var(--mantine-color-);
 }
 
-/* Итого */
+
 .totalGroup {
   margin-bottom: var(--mantine-spacing-md);
   margin-left: 0;
@@ -76,14 +80,20 @@
 
 .totalPrice {
   font-weight: 700;
-  color: var(--mantine-color-green-6);
+  color: var(--mantine-color-black);
 }
 
-/* Кнопка очистки */
+.quantityButton {
+  background-color: var(--mantine-color-gray-1);
+  color: var(--mantine-color-black);
+  border: none;
+  border-radius: 20%;
+}
+
 .clearButton {
   background-color: var(--mantine-color-green-6);
   transition: transform 0.2s ease;
-  width: 100%; /* ✅ На всю ширину */
+  width: 100%;
 }
 
 .clearButton:hover {
@@ -91,10 +101,9 @@
   background-color: var(--mantine-color-green-4);
 }
 
-/* Пустая корзина */
+
 .emptyCart {
-  width: 350px;
-  padding: var(--mantine-spacing-md);
+  max-width: 300px;
   text-align: center;
   background-color: var(--mantine-color-white);
 }
