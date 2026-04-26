@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 
-const mockMatchMedia = (query: string) => ({
+const mockMatchMedia = (query: string): MediaQueryList => ({
   matches: false,
   media: query,
   onchange: null,
@@ -15,10 +15,13 @@ const mockMatchMedia = (query: string) => ({
   removeListener: () => {},
   addEventListener: () => {},
   removeEventListener: () => {},
-  dispatchEvent: () => {},
+  dispatchEvent: () => true,
 });
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: mockMatchMedia,
-});
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    configurable: true,
+    value: mockMatchMedia,
+  });
+}

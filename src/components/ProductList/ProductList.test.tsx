@@ -1,27 +1,36 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen, waitFor } from '@testing-library/react';
-import { renderWithProviders } from '../../test/test-utils';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { screen } from '@testing-library/react';
+import { renderWithRedux } from '../../test/test-utils';
 import { ProductList } from './ProductList';
-import { fetchProducts } from '../../api/products';
 import type { Product } from '../../types/product';
-
-vi.mock('../../api/products');
+import { vi } from 'vitest';
 
 describe('Список товаров', () => {
+  
+  
   beforeEach(() => {
-    vi.clearAllMocks();
+    global.fetch = vi.fn(() => 
+      Promise.resolve({
+        ok: true,
+        json: async () => [],
+      } as Response)
+    ) as any;
   });
 
-  it('показывает лоадер во время загрузки товаров', () => {
-    vi.mocked(fetchProducts).mockReturnValue(new Promise(() => {}));
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('показывает лоадер во время загрузки', () => {
     
-    renderWithProviders(<ProductList />);
+    global.fetch = vi.fn(() => new Promise(() => {})) as any;
     
+    renderWithRedux(<ProductList />);
     
     expect(screen.getByTestId('product-list-loader')).toBeInTheDocument();
   });
 
-  it('отображает товары после успешной загрузки', async () => {
+  it('отображает товары при статусе succeeded', () => {
     const mockProducts: Product[] = [
       { 
         id: 1, 
@@ -32,24 +41,33 @@ describe('Список товаров', () => {
       },
     ];
     
-    vi.mocked(fetchProducts).mockResolvedValue(mockProducts);
     
-    renderWithProviders(<ProductList />);
-    
-    await waitFor(() => {
-      expect(screen.getByText('Brocolli')).toBeInTheDocument();
-      expect(screen.getByText('1 Kg')).toBeInTheDocument();
-      expect(screen.getByText('$120')).toBeInTheDocument();
+    renderWithRedux(<ProductList />, {
+      products: {
+        items: mockProducts,
+        status: 'succeeded',  
+        error: null,
+      },
     });
+    
+  
+    expect(screen.getByText(/Brocolli/)).toBeInTheDocument();
+    expect(screen.getByText(/1 Kg/)).toBeInTheDocument();
+    expect(screen.getByText(/\$120/)).toBeInTheDocument();
   });
 
-  it('показывает сообщение об ошибке при неудачной загрузке', async () => {
-    vi.mocked(fetchProducts).mockRejectedValue(new Error('Failed to fetch'));
+  it('показывает ошибку при статусе failed', () => {
     
-    renderWithProviders(<ProductList />);
+    global.fetch = vi.fn(() => Promise.reject(new Error('Failed'))) as any;
     
-    await waitFor(() => {
-      expect(screen.getByText('Failed to load products')).toBeInTheDocument();
+    renderWithRedux(<ProductList />, {
+      products: {
+        items: [],
+        status: 'failed',  
+        error: 'Error',
+      },
     });
+    
+    expect(screen.getByText('Failed to load products')).toBeInTheDocument();
   });
 });

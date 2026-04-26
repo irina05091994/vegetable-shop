@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
-// Mock matchMedia
+
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation(query => ({
@@ -16,5 +16,4 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-// Mock fetch
 global.fetch = vi.fn();

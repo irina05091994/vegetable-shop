@@ -1,16 +1,15 @@
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, Box } from '@mantine/core';
 import { ProductList } from './components/ProductList';
 import { Layout } from './components/Layout';
-import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
     <MantineProvider defaultColorScheme="light">
-      <CartProvider>
+      <Box style={{ backgroundColor: 'var(--mantine-color-gray-0)', minHeight: '100vh' }}>
         <Layout>
           <ProductList />
         </Layout>
-      </CartProvider>
+      </Box>
     </MantineProvider>
   );
 }
